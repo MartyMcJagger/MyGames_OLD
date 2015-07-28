@@ -192,6 +192,7 @@ public abstract class Game implements IGame {
 		for (GameModule gm : modules)
 			gm.onWarmup();
 		
+		countdownTask.stop();
 		gameTimer.start();
 	}
 	
@@ -341,6 +342,8 @@ public abstract class Game implements IGame {
 
 		players.add(player.getUniqueId());
 		mygames.getLobbyMgr().joinedGame(player, this);
+		
+		scores.put(player.getUniqueId(), 0);
 		
 		if (getPlayersNeeded() > 0) {
 			sbm.playersNeeded();
@@ -511,6 +514,12 @@ public abstract class Game implements IGame {
 			gameScores.add(getPlayerScore(Bukkit.getPlayer(uuid)));
 		}
 		return gameScores;
+	}
+	
+	/** Override this with whatever custom side scores you desire. */
+	@Override
+	public ArrayList<GameScore> getSideScores() {
+		return getPlayerScores();
 	}
 	
 	/**

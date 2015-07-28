@@ -101,6 +101,6 @@ public class GameTimer implements Runnable {
 	}
 
 	public boolean isWarmup() {
-		return ((ticks / 20) > game.getWarmupTime());
+		return ((ticks / 20) < game.getWarmupTime());
 	}
 }

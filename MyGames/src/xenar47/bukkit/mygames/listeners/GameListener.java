@@ -182,8 +182,8 @@ public class GameListener implements Listener {
 		
 		boolean cancel = false;
 		
-		cancel = ((!game.doFallDamage()) && event.getCause() == DamageCause.FALL)?true:cancel;
-		cancel = game.isWarmup()?true:cancel;
+		cancel = ((!game.doFallDamage()) && (event.getCause() == DamageCause.FALL))?true:cancel;
+		cancel = (game.isWarmup())?true:cancel;
 		
 		if (cancel) {
 			event.setDamage(0.0);

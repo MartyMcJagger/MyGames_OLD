@@ -75,6 +75,12 @@ public abstract class Weapon {
 
 	public abstract ItemStack getBaseItem();
 	
+	/**
+	 *  Override this if you need to add lores to store data.
+	 *
+	 */
+	public void setCustomData(ItemStack is) {}
+	
 	public final boolean isRegistered() {
 		return isRegistered(getName());
 	}
@@ -128,9 +134,10 @@ public abstract class Weapon {
 			lores.add(weapon.getName());
 			
 			im.setLore(lores);
-			
 			is.setItemMeta(im);
-		
+
+			weapon.setCustomData(is);
+			
 			return is;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

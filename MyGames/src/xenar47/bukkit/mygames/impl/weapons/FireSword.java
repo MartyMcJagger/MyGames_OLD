@@ -31,7 +31,7 @@ public class FireSword extends Weapon {
 	@Override
 	public int melee(Game game, Player player, Player victim) {
 		victim.setFireTicks(20 * 5);
-		return 0;
+		return 2;
 	}
 
 	@Override
